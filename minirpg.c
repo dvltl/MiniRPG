@@ -28,7 +28,7 @@ int main()
 	init_necromancer( necromancer );
 
 	printf("Welcome, traveler. You are about to embark on your epic quest.\n\n");
-	script_speaking("Villager", 2, "Oh, stranger! Good timing! You look like an experienced warrior!", "Please, help our village! Evil necromancer terrorize our village!"); 
+	script_speaking("Villager", 2, "Oh, stranger! Good timing! You look like an experienced warrior!", "Please, help us! Evil necromancer terrorizes our village!"); 
 	script_speaking("Villager", 2, "Many of us have already tried to slay him but they failed...", "Please, slay him for us!!!\n");
 	
 	for (battle_number = 0; battle_number < 5; battle_number++)

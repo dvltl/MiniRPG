@@ -112,14 +112,15 @@ int battle(struct player* hero, struct creature *enemy)
 		script_speaking("Hero", 2, "Yeah-yeah, whatever you say, pal.", "(to himself) It's showtime!");
 	}
 
-	printf("What should we do???\n");
 	while (1)
 	{	
+		printf("What should we do???\n");
 		printf("HP: %d/%d Enemy HP:%d\n", hero->hp, hero->max_hp, enemy->hp);
 		printf("1.Attack\n");
 		printf("2.Use potion / +50 HP\n");
 		printf("3.Leave the battle\n");
 		scanf("%d",&act);
+		system("clear");
 		switch (act)
 		{
 			case 1: hit(hero, enemy);
@@ -132,7 +133,11 @@ int battle(struct player* hero, struct creature *enemy)
 					break;
 			case 2: heal( hero );
 					break;
-			case 3: goto leave;		
+			case 3:
+				if (enemy -> exp != 40)
+			       		goto leave;
+				else
+					printf("Cannot flee from this battle...\n");		
 		}
 	}
 victory:
