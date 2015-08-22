@@ -1,0 +1,219 @@
+Running CPAchecker with default heap size (1200M). Specify a larger value with -heap if you have more RAM.
+Running CPAchecker with the following extra VM options:  -Djava.io.tmpdir=/var/folders/fv/410v9zr967vb9wlhrgjyfdk80000gp/T/
+Option: analysis.programNames Class: org.sosy_lab.cpachecker.cmdline.CPAMain$MainOptions field: programs value: ../../workspace/MiniRPG//../../workspace/MiniRPG//minirpg.c (Configuration.setOptionValueForField, CONFIG)
+
+Option: configuration.dumpFile Class: org.sosy_lab.cpachecker.cmdline.CPAMain$MainOptions field: configurationOutputFile value: null (Configuration.setOptionValueForField, CONFIG)
+
+Option: statistics.export Class: org.sosy_lab.cpachecker.cmdline.CPAMain$MainOptions field: exportStatistics value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: statistics.file Class: org.sosy_lab.cpachecker.cmdline.CPAMain$MainOptions field: exportStatisticsFile value: null (Configuration.setOptionValueForField, CONFIG)
+
+Option: statistics.print Class: org.sosy_lab.cpachecker.cmdline.CPAMain$MainOptions field: printStatistics value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: pcc.proofgen.doPCC Class: org.sosy_lab.cpachecker.cmdline.CPAMain$MainOptions field: doPCC value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: limits.time.wall Class: org.sosy_lab.cpachecker.util.resources.ResourceLimitChecker$ResourceLimitOptions field: walltime value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: limits.time.cpu Class: org.sosy_lab.cpachecker.util.resources.ResourceLimitChecker$ResourceLimitOptions field: cpuTime value: 900s (Configuration.setOptionValueForField, CONFIG)
+
+Using the following resource limits: CPU-time limit of 900s (ResourceLimitChecker.fromConfiguration, INFO)
+
+Option: analysis.stopAfterError Class: org.sosy_lab.cpachecker.core.CPAchecker field: stopAfterError value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.disable Class: org.sosy_lab.cpachecker.core.CPAchecker field: disableAnalysis value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.initialStatesFor Class: org.sosy_lab.cpachecker.core.CPAchecker field: initialStatesFor value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.partitionInitialStates Class: org.sosy_lab.cpachecker.core.CPAchecker field: partitionInitialStates value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.algorithm.CBMC Class: org.sosy_lab.cpachecker.core.CPAchecker field: runCBMCasExternalTool value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.unknownAsTrue Class: org.sosy_lab.cpachecker.core.CPAchecker field: unknownAsTrue value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.collectAssumptions Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: collectAssumptions value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.algorithm.conditionAdjustment Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: useAdjustableConditions value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.algorithm.CEGAR Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: useCEGAR value: true (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.checkCounterexamples Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: checkCounterexamples value: false (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.checkCounterexamplesWithBDDCPARestriction Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: useBDDCPARestriction value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.algorithm.BMC Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: useBMC value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.algorithm.impact Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: useImpactAlgorithm value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.restartAfterUnknown Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: useRestartingAlgorithm value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.memorizeReachedAfterRestart Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: memorizeReachedAfterRestart value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.combineARGsAfterRestart Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: useARGCombiningAlgorithm value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.algorithm.analysisWithEnabler Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: useAnalysisWithEnablerCPAAlgorithm value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.algorithm.proofCheck Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: useProofCheckAlgorithm value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.algorithm.propertyCheck Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: usePropertyCheckingAlgorithm value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.algorithm.testGen Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: useTestGenAlgorithm value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.checkProof Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: useResultCheckAlgorithm value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.extractRequirements.customInstruction Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: useCustomInstructionRequirementExtraction value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.refinePreconditions Class: org.sosy_lab.cpachecker.core.CoreComponentsFactory field: usePreconditionRefinementAlgorithm value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.traversal.order Class: org.sosy_lab.cpachecker.core.reachedset.ReachedSetFactory field: traversalMethod value: BFS (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.traversal.useCallstack Class: org.sosy_lab.cpachecker.core.reachedset.ReachedSetFactory field: useCallstack value: true (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.traversal.useLoopstack Class: org.sosy_lab.cpachecker.core.reachedset.ReachedSetFactory field: useLoopstack value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.traversal.useReversePostorder Class: org.sosy_lab.cpachecker.core.reachedset.ReachedSetFactory field: useReversePostorder value: true (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.traversal.usePostorder Class: org.sosy_lab.cpachecker.core.reachedset.ReachedSetFactory field: usePostorder value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.traversal.useExplicitInformation Class: org.sosy_lab.cpachecker.core.reachedset.ReachedSetFactory field: useExplicitInformation value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.traversal.useAutomatonInformation Class: org.sosy_lab.cpachecker.core.reachedset.ReachedSetFactory field: useAutomatonInformation value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.traversal.byAutomatonVariable Class: org.sosy_lab.cpachecker.core.reachedset.ReachedSetFactory field: byAutomatonVariable value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.reachedSet Class: org.sosy_lab.cpachecker.core.reachedset.ReachedSetFactory field: reachedSet value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: cpa Class: org.sosy_lab.cpachecker.core.CPABuilder field: cpaName value: cpa.arg.ARGCPA (Configuration.setOptionValueForField, CONFIG)
+
+Option: specification Class: org.sosy_lab.cpachecker.core.CPABuilder field: specificationFiles value: [../cpachecker/config/specification/sv-comp.spc] (Configuration.setOptionValueForField, CONFIG)
+
+Option: backwardSpecification Class: org.sosy_lab.cpachecker.core.CPABuilder field: backwardSpecificationFiles value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+CPAchecker 1.4-svn (Java HotSpot(TM) 64-Bit Server VM 1.8.0_20) started (CPAchecker.run, INFO)
+
+Option: reachedSet.export Class: org.sosy_lab.cpachecker.core.MainCPAStatistics field: exportReachedSet value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: reachedSet.file Class: org.sosy_lab.cpachecker.core.MainCPAStatistics field: reachedSetFile value: null (Configuration.setOptionValueForField, CONFIG)
+
+Option: reachedSet.dot Class: org.sosy_lab.cpachecker.core.MainCPAStatistics field: reachedSetGraphDumpPath value: null (Configuration.setOptionValueForField, CONFIG)
+
+Option: statistics.memory Class: org.sosy_lab.cpachecker.core.MainCPAStatistics field: monitorMemoryUsage value: false (Configuration.setOptionValueForField, CONFIG)
+
+Option: coverage.enabled Class: org.sosy_lab.cpachecker.util.coverage.CoverageReport field: enabled value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: coverage.export Class: org.sosy_lab.cpachecker.util.coverage.CoverageReportGcov field: exportCoverage value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: coverage.file Class: org.sosy_lab.cpachecker.util.coverage.CoverageReportGcov field: outputCoverageFile value: null (Configuration.setOptionValueForField, CONFIG)
+
+Option: coverage.stdout Class: org.sosy_lab.cpachecker.util.coverage.CoverageReportStdoutSummary field: enabled value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: parser.usePreprocessor Class: org.sosy_lab.cpachecker.cfa.CFACreator field: usePreprocessor value: true (Configuration.setOptionValueForField, CONFIG)
+
+Option: parser.readLineDirectives Class: org.sosy_lab.cpachecker.cfa.CFACreator field: readLineDirectives value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.entryFunction Class: org.sosy_lab.cpachecker.cfa.CFACreator field: mainFunctionName value: main (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.machineModel Class: org.sosy_lab.cpachecker.cfa.CFACreator field: machineModel value: LINUX64 (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.interprocedural Class: org.sosy_lab.cpachecker.cfa.CFACreator field: interprocedural value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.functionPointerCalls Class: org.sosy_lab.cpachecker.cfa.CFACreator field: fptrCallEdges value: true (Configuration.setOptionValueForField, CONFIG)
+
+Option: analysis.useGlobalVars Class: org.sosy_lab.cpachecker.cfa.CFACreator field: useGlobalVars value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.useMultiEdges Class: org.sosy_lab.cpachecker.cfa.CFACreator field: useMultiEdges value: true (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.removeIrrelevantForSpecification Class: org.sosy_lab.cpachecker.cfa.CFACreator field: removeIrrelevantForSpecification value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.export Class: org.sosy_lab.cpachecker.cfa.CFACreator field: exportCfa value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.exportPerFunction Class: org.sosy_lab.cpachecker.cfa.CFACreator field: exportCfaPerFunction value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.callgraph.export Class: org.sosy_lab.cpachecker.cfa.CFACreator field: exportFunctionCalls value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.callgraph.file Class: org.sosy_lab.cpachecker.cfa.CFACreator field: exportFunctionCallsFile value: null (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.file Class: org.sosy_lab.cpachecker.cfa.CFACreator field: exportCfaFile value: null (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.checkNullPointers Class: org.sosy_lab.cpachecker.cfa.CFACreator field: checkNullPointers value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.expandFunctionPointerArrayAssignments Class: org.sosy_lab.cpachecker.cfa.CFACreator field: expandFunctionPointerArrayAssignments value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.transformIntoSingleLoop Class: org.sosy_lab.cpachecker.cfa.CFACreator field: transformIntoSingleLoop value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.simplifyCfa Class: org.sosy_lab.cpachecker.cfa.CFACreator field: simplifyCfa value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.moveDeclarationsToFunctionStart Class: org.sosy_lab.cpachecker.cfa.CFACreator field: moveDeclarationsToFunctionStart value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.useFunctionCallUnwinding Class: org.sosy_lab.cpachecker.cfa.CFACreator field: useFunctionCallUnwinding value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.findLiveVariables Class: org.sosy_lab.cpachecker.cfa.CFACreator field: findLiveVariables value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: cfa.classifyNodes Class: org.sosy_lab.cpachecker.cfa.CFACreator field: classifyNodes value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: language Class: org.sosy_lab.cpachecker.cfa.CFACreator field: language value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: parser.dialect Class: org.sosy_lab.cpachecker.cfa.CParser$ParserOptions field: dialect value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: locmapper.dumpTokenizedProgramToFile Class: org.sosy_lab.cpachecker.cfa.CParserWithLocationMapper field: dumpTokenizedProgramToFile value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: parser.transformTokensToLines Class: org.sosy_lab.cpachecker.cfa.CParserWithLocationMapper field: tokenizeCode value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Option: parser.preprocessor Class: org.sosy_lab.cpachecker.cfa.CPreprocessor field: preprocessor value: <DEFAULT> (Configuration.setOptionValueForField, CONFIG)
+
+Starting parsing of file(s) (CFACreator.parseFileAndCreateCFA, FINE)
+
+Running preprocessor [cpp, ../../workspace/MiniRPG//../../workspace/MiniRPG//minirpg.c] (CPreprocessor.preprocess, FINE)
+
+Executing cpp (ProcessExecutor.<init>, FINEST)
+
+cpp ../../workspace/MiniRPG//../../workspace/MiniRPG//minirpg.c (ProcessExecutor.<init>, ALL)
+
+Waiting for cpp (ProcessExecutor$1.call, FINEST)
+
+cpp error output: In file included from ../../workspace/MiniRPG//../../workspace/MiniRPG//minirpg.c:1: (ProcessExecutor.handleErrorOutput, WARNING)
+
+cpp error output: In file included from /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/include/stdio.h:65: (ProcessExecutor.handleErrorOutput, WARNING)
+
+cpp error output: In file included from /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/include/Availability.h:151: (ProcessExecutor.handleErrorOutput, WARNING)
+
+cpp error output: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/include/AvailabilityInternal.h:5614:10: error: unterminated conditional directive (ProcessExecutor.handleErrorOutput, WARNING)
+
+cpp error output:         #if __MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_10_7 (ProcessExecutor.handleErrorOutput, WARNING)
+
+cpp error output:          ^ (ProcessExecutor.handleErrorOutput, WARNING)
+
+cpp error output: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/include/AvailabilityInternal.h:5583:10: error: unterminated conditional directive (ProcessExecutor.handleErrorOutput, WARNING)
+
+cpp error output:         #if __MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_10_6 (ProcessExecutor.handleErrorOutput, WARNING)
+
+cpp error output:          ^ (ProcessExecutor.handleErrorOutput, WARNING)
+
+cpp error output: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/include/AvailabilityInternal.h:5556:10: error: unterminated conditional directive (ProcessExecutor.handleErrorOutput, WARNING)
+
+Skipping further preprocessor error output... (CPreprocessor$CPreprocessorExecutor.handleErrorOutput, WARNING)
+
+cpp has terminated normally (ProcessExecutor$1.call, FINEST)
+
+Preprocessor finished (CPreprocessor.preprocess, FINE)
+
+Error: Parsing failed (Preprocessor failed with exit code 1) (CPreprocessor.preprocess, SEVERE)
+
+Parsing failed
+org.sosy_lab.cpachecker.exceptions.CParserException: Preprocessor failed with exit code 1
+	at org.sosy_lab.cpachecker.cfa.CPreprocessor.preprocess(CPreprocessor.java:77)
+	at org.sosy_lab.cpachecker.cfa.CParserWithPreprocessor.parseFile(CParserWithPreprocessor.java:53)
+	at org.sosy_lab.cpachecker.cfa.CFACreator.parseToCFAs(CFACreator.java:540)
+	at org.sosy_lab.cpachecker.cfa.CFACreator.parseFileAndCreateCFA(CFACreator.java:360)
+	at org.sosy_lab.cpachecker.core.CPAchecker.parse(CPAchecker.java:361)
+	at org.sosy_lab.cpachecker.core.CPAchecker.run(CPAchecker.java:246)
+	at org.sosy_lab.cpachecker.cmdline.CPAMain.main(CPAMain.java:133)
+ (CPAchecker.run, ALL)
+
+Please make sure that the code can be compiled by a compiler.
+If the code was not preprocessed, please use a C preprocessor
+or specify the -preprocess command-line argument.
+If the error still occurs, please send this error message
+together with the input file to cpachecker-users@googlegroups.com.
+ (CPAchecker.run, INFO)
+
+More details about the verification run can be found in the directory "./output".
