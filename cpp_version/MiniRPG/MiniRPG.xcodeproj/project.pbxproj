@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3AD851EB1B890DEE00DBA749 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AD851EA1B890DEE00DBA749 /* main.cpp */; };
+		3AD851F81B890E2B00DBA749 /* minirpg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3AD851F51B890E2B00DBA749 /* minirpg.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,9 @@
 
 /* Begin PBXFileReference section */
 		3AD851E71B890DEE00DBA749 /* MiniRPG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MiniRPG; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AD851EA1B890DEE00DBA749 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3AD851F51B890E2B00DBA749 /* minirpg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = minirpg.cpp; sourceTree = SOURCE_ROOT; };
+		3AD851F61B890E2B00DBA749 /* RPG.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RPG.hpp; sourceTree = SOURCE_ROOT; };
+		3AD851F71B890E2B00DBA749 /* types.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = types.hpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +59,9 @@
 		3AD851E91B890DEE00DBA749 /* MiniRPG */ = {
 			isa = PBXGroup;
 			children = (
-				3AD851EA1B890DEE00DBA749 /* main.cpp */,
+				3AD851F51B890E2B00DBA749 /* minirpg.cpp */,
+				3AD851F61B890E2B00DBA749 /* RPG.hpp */,
+				3AD851F71B890E2B00DBA749 /* types.hpp */,
 			);
 			path = MiniRPG;
 			sourceTree = "<group>";
@@ -118,7 +122,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AD851EB1B890DEE00DBA749 /* main.cpp in Sources */,
+				3AD851F81B890E2B00DBA749 /* minirpg.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
