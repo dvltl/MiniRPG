@@ -23,6 +23,7 @@ class Character {
 		int exp;
         int gold;
     public:
+        Character();
 		Character(const int);
 		void decHP(const int amount) { this -> hp -= amount; };
         void setHP(const int hp) { this -> hp = hp; };
@@ -153,12 +154,12 @@ int Hero :: challenge(Character& enemy) {
 //	}
 
 	while (enemy.getHP() > 0 && this -> getHP() > 0) {
-        cout << "Enemy type: " << charNames[enemy.getType()] << endl;
 		cout << "What should we do?" << endl;
 		cout << "HP: " << this -> getHP() << '/' << this -> maxHP << endl;
         cout << "Atk / Def: " << this -> getAtk() << " / " << this -> getDef() << endl;
-        cout << "Crit chance: " << this -> critChance << endl;
-		cout << "Enemy HP: " << enemy.getHP() << endl;
+        cout << "Crit chance: " << this -> critChance * 100 << '%' << endl;
+        cout << "Enemy type: " << charNames[enemy.getType()] << endl;
+        cout << "Enemy HP: " << enemy.getHP() << endl;
         cout << "Atk / Def: " << enemy.getAtk() << " / " << enemy.getDef() << endl;
         cout << "Potions: " << this -> potions << endl << endl;
 		cout << "1. Attack" << endl;
@@ -190,6 +191,10 @@ int Hero :: challenge(Character& enemy) {
 	}
 
 	return -1;
+}
+
+Character :: Character(){
+    this -> type = -1;
 }
 
 Character :: Character(const int type) {
@@ -234,7 +239,7 @@ Character :: Character(const int type) {
 		//Ghost
 		case 4: {
             this -> hp = 80;
-            this -> atk = 8;
+            this -> atk = 9;
             this -> def = 10;
             this -> exp = 15;
             this -> gold = 12;

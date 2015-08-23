@@ -102,13 +102,10 @@ void RPG :: shop() {
 }
 
 void RPG :: battle() throw (int){
+    Character enemy = Character();
 	if (!enemies.empty()) {
-		Character enemy = this -> enemies.front();
+		enemy = this -> enemies.front();
         this -> enemies.pop();
-        
-        if (enemy.getType() == NECROMANCER){
-            shopOpportunity = false;
-        }
         
 		int result = hero.challenge(enemy);
 
@@ -121,16 +118,22 @@ void RPG :: battle() throw (int){
 			hero.updateExp(enemy.getExp());
             hero.setGold(hero.getGold() + enemy.getGold());
             
+            if (NECROMANCER == enemy.getType()){
+                gameCleared = true;
+            }
+            
             cout << charNames[enemy.getType()] << " killed" << endl;
             cout << "Got " << enemy.getExp() << " EXP" << endl;
             cout << "Got " << enemy.getGold() << " Gold" << endl;
             //sleep(1);
         } else {
-            if (enemies.empty()){
+            if (NECROMANCER == enemy.getType()){
                 cout << "You have fled from battle with necromancer" << endl;
-                necromancer.setHP(necromancer.getHP() + 100);
+                necromancer.setHP(enemy.getHP() + 150);
+                necromancer.setAtk(necromancer.getAtk() + 3);
+                necromancer.setDef(necromancer.getDef() + 5);
                 enemies = generateEnemies(rand() % 10);
-                cout << "He summoned more of his minions" << endl;
+                cout << "He summoned more of his minions to stall you while he is healing" << endl;
                 cout << "You have to fight through them again" << endl;
                 hero.setPotions(hero.getPotions() + 1);
                 cout << "Found a potion!" << endl;
