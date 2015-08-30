@@ -9,7 +9,8 @@ class RPG {
 	private:
 		Hero hero;
         Character necromancer;
-		queue <Character> enemies;
+        vector<Character> minions;
+		queue <int> enemies;
 		bool heroDead;
 		bool gameCleared;
 		bool shopOpportunity;
@@ -19,23 +20,27 @@ class RPG {
 		void shop();
 		void battle() throw (int);
 		bool isGameOver() { return heroDead || gameCleared; };
-		queue <Character> generateEnemies(const int);
+		queue <int> generateEnemies(const int);
 };
 
 RPG :: RPG(): necromancer(Character(NECROMANCER)), heroDead(false), gameCleared(false), shopOpportunity(false) {
 	hero = Hero();
 	enemies = generateEnemies( rand() % 10 );
+    
+    for (int i = 2; i < 5; ++i){ // 0 - Hero, 1 - Necomancer
+        minions.push_back( Character( i ) );
+    }
 }
 
-queue <Character> RPG :: generateEnemies(const int enemyNumber) {
-	queue <Character> result = queue <Character>();
+queue <int> RPG :: generateEnemies(const int enemyNumber) {
+	queue <int> result = queue <int>();
 	int num = enemyNumber;
 
 	while (num--) {
-		result.push( Character( 2 + rand() % 3 ) );
+		result.push( 2 + rand() % 3 );
 	}
 
-	result.push( necromancer );
+	result.push( NECROMANCER );
 
 	return result;
 }
@@ -104,7 +109,12 @@ void RPG :: shop() {
 void RPG :: battle() throw (int){
     Character enemy = Character();
 	if (!enemies.empty()) {
-		enemy = this -> enemies.front();
+        int front = this -> enemies.front();
+        if (NECROMANCER == front){
+            enemy = necromancer;
+        } else {
+            enemy = minions[ front - 2 ];
+        }
         this -> enemies.pop();
         
 		int result = hero.challenge(enemy);
@@ -129,9 +139,9 @@ void RPG :: battle() throw (int){
         } else {
             if (NECROMANCER == enemy.getType()){
                 cout << "You have fled from battle with necromancer" << endl;
-                necromancer.setHP(enemy.getHP() + 150);
-                necromancer.setAtk(necromancer.getAtk() + 3);
-                necromancer.setDef(necromancer.getDef() + 5);
+                necromancer.setHP(enemy.getHP() + 125);
+                necromancer.setAtk(necromancer.getAtk() + 7);
+                necromancer.setDef(necromancer.getDef() + 3);
                 enemies = generateEnemies(rand() % 10);
                 cout << "He summoned more of his minions to stall you while he is healing" << endl;
                 cout << "You have to fight through them again" << endl;
