@@ -147,7 +147,7 @@ int Hero :: hit(Character& enemy){
 }
 
 int Hero :: challenge(Character& enemy) {
-	int act = 0;
+	char act = 0;
 
 //	if (NECROMANCER == enemy.getType){
 		//TODO: add scripted dialog between hero and necromancer
@@ -167,9 +167,9 @@ int Hero :: challenge(Character& enemy) {
         cout << "3. Flee from battle" << endl;
 
 		cin >> act;
-
+        
 		switch (act) {
-            case 1: {
+            case '1': {
 				int result = this -> hit(enemy);
 				if (result == GAME_OVER){
 					return GAME_OVER;
@@ -178,17 +178,21 @@ int Hero :: challenge(Character& enemy) {
 				}
                 break;
             }
-            case 2: {
+            case '2': {
 				this -> heal();
                 break;
             }
-            case 3: {
+            case '3': {
                 return FLED;
             }
-            default: {
-            }
+
 		}
-	}
+        
+        while ( ( act = getchar() ) != '\n'){
+            
+        }
+	
+    }
 
 	return -1;
 }

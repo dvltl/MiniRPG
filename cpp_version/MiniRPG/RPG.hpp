@@ -66,7 +66,7 @@ void RPG :: action () throw (int){
 }
 
 void RPG :: shop() {
-	int act;
+	char act;
 	bool inShop = true;
 
 	cout << "Welcome to the shop!" << endl;
@@ -83,23 +83,25 @@ void RPG :: shop() {
 		cin >> act;
 
 		switch(act) {
-			case 1: {
+			case '1': {
 				hero.addPotion();
                 break;
 			}
-			case 2: {
+			case '2': {
 				hero.fullHeal();
                 break;
 			}
-			case 3: {
+			case '3': {
 				inShop = false;
                 break;
 			}
-			default: {
-				cout << "Please enter one of the numbers of the actions listed below" << endl;
-                break;
-			}
+			
 		}
+        
+        while ( ( act = getchar() ) != '\n'){
+            
+        }
+        
         system("clear");
 	}
 
