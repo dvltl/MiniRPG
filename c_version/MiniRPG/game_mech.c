@@ -23,36 +23,41 @@ void init_necromancer(struct creature* necromancer)
 	necromancer -> def = 14;
 	necromancer -> hp = 200;
 	necromancer -> exp = 40;
-}	
+	necromancer -> name = "Necromancer";
+}
 
-struct creature* enemy_encountered(void)
+void enemy_encountered(struct creature* enemy)
 {
-	struct creature* enemy = malloc(sizeof(struct creature));
 	int k = rand() % 3;
 
-	if (enemy == NULL) printf("Enemy fled\n");
+	if (enemy == NULL)
+		printf("Enemy fled\n");
+
 	switch (k)
 	{
-		case 0:	printf("Creepy skeleton appeared\n");
+		case 0:
 				enemy -> hp = 50;
 				enemy -> atk = 15;
 				enemy -> def = 5;
 				enemy -> exp = 10;
+				enemy -> name = "Creepy skeleton";
 				break;
-		case 1: printf("Drunk goblin appeared\n");
+		case 1:
 				enemy -> hp = 70;
 				enemy -> atk = 12;
 				enemy -> def = 8;
 				enemy -> exp = 20;
+				enemy -> name = "Drunk goblin";
 				break;
-		case 2: printf("Spooky ghost appeared\n");
+		case 2:
 				enemy -> hp = 80;
 				enemy -> atk = 8;
 				enemy -> def = 10;
 				enemy -> exp = 15;
+				enemy -> name = "Spooky ghost";
 				break;
 	}
-	return enemy;
+	printf("%s appeared\n", enemy -> name);
 }
 
 void hit(struct player* hero, struct creature *enemy)
@@ -60,13 +65,13 @@ void hit(struct player* hero, struct creature *enemy)
 	int _hit = hero->atk - enemy->def;
 	if (_hit > 0)
 		enemy -> hp -= _hit;
-	else 
+	else
 		enemy->hp -= 1;
-	
+
 	if ((_hit = enemy->atk - hero->def) > 0)
 		hero -> hp -= _hit;
-	else 
-		hero->hp -= 1; 	
+	else
+		hero->hp -= 1;
 }
 
 void heal(struct player* hero)
@@ -74,9 +79,12 @@ void heal(struct player* hero)
 	if (hero->potions)
 	{
 		hero -> hp += 50;
+		if (hero -> hp > hero -> max_hp) {
+			hero -> hp = hero -> max_hp;
+		}
 		-- hero->potions;
-		printf("Potions left: %d\n", hero->potions);
-	} else printf("No potions left!\n");
+	} else
+		printf("No potions left!\n");
 }
 
 void rank_player(struct player* hero, int exp)
@@ -87,7 +95,7 @@ void rank_player(struct player* hero, int exp)
 	hero -> def += 2;
 	hero -> max_hp += 20;
 	hero -> hp = hero -> max_hp;
-}	
+}
 
 void script_speaking(char* who, char num,  ...)
 {
@@ -100,10 +108,21 @@ void script_speaking(char* who, char num,  ...)
 	va_end (args);
 }
 
+void victory(struct player* hero, struct creature* enemy)
+{
+	if (enemy -> exp == 40)
+	{
+		script_speaking("Necromancer", 4, "I...", "will never be a memory...", "We will meet again soon enough...", "And then I WILL kill you");
+		script_speaking("Hero", 3, "(merely standing on his feet) Finally...", "I think I'll stay here for a while", "I need to recover from the battle");
+	}
+
+	rank_player( hero, enemy -> exp );
+}
+
 int battle(struct player* hero, struct creature *enemy)
-{	
+{
 	int act;
-	
+
 	if (enemy -> hp == 200)
 	{
 		script_speaking("Necromancer", 1, "How dare you, mere human, interfere in my great plans!");
@@ -113,9 +132,10 @@ int battle(struct player* hero, struct creature *enemy)
 	}
 
 	while (1)
-	{	
+	{
+		printf("Potions left: %d\n", hero -> potions);
 		printf("What should we do???\n");
-		printf("HP: %d/%d Enemy HP:%d\n", hero->hp, hero->max_hp, enemy->hp);
+		printf("HP: %d/%d %s's HP:%d\n", hero -> hp, hero -> max_hp, enemy -> name, enemy -> hp);
 		printf("1.Attack\n");
 		printf("2.Use potion / +50 HP\n");
 		printf("3.Leave the battle\n");
@@ -129,26 +149,23 @@ int battle(struct player* hero, struct creature *enemy)
 						printf("Bad end!\nGame over...\n");
 						return 2;
 					}
-					if (enemy -> hp <= 0) goto victory;
+					if (enemy -> hp <= 0)
+					{
+						victory(hero, enemy);
+						return 0;
+					}
 					break;
 			case 2: heal( hero );
 					break;
 			case 3:
 				if (enemy -> exp != 40)
-			       		goto leave;
+					return 1;
 				else
-					printf("Cannot flee from this battle...\n");		
+					printf("Cannot flee from this battle...\n");
+				break;
+			default:
+				printf("Choose action form one of the mentioned above\n");
 		}
 	}
-victory:
-	if (enemy -> exp == 40)
-	{
-		script_speaking("Necromancer", 4, "I...", "will never be a memory...", "We will meet again soon enough...", "And then I WILL kill you");
-		script_speaking("Hero", 3, "(merely standing on his feet) Finally...", "I think I'll stay here for a while", "I need to recover from the battle");
-	}
-
-	rank_player( hero, enemy -> exp );
 	return 0;
-leave:
-	return 1;
 }
