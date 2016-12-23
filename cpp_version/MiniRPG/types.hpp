@@ -1,30 +1,28 @@
+#ifndef TYPES_HPP
+#define TYPES_HPP
+
 #include <string>
 #include <iostream>
 //#include <cstdarg>
 
-using namespace std;
+namespace {
+	const int GAME_OVER = 400;
+	const int ENEMY_DEAD = 404;
+	const int FLED = 405;
+	const int HEAL = 65;
+}
 
-#define HERO 0
-#define NECROMANCER 1
-#define GAME_OVER 400
-#define ENEMY_DEAD 404
-#define FLED 405
-
-#define HEAL 65
-
-string charNames[] =  { "Hero", "Necromancer", "Creepy skeleton", "Drunk goblin", "Spooky ghost" };
+std::string charNames[] =  { "Hero", "Necromancer", "Creepy skeleton", "Drunk goblin", "Spooky ghost" };
 
 class Character {
-	private:
-		int type;
-		int hp;
-		int atk;
-		int def;
-		int exp;
-        int gold;
-    public:
+public:
+		enum Types {
+			HERO,
+			NECROMANCER,
+			NORM_ENEMY
+		};
         Character();
-		Character(const int);
+		Character(Types, const int);
 		void decHP(const int amount) { this -> hp -= amount; };
         void setHP(const int hp) { this -> hp = hp; };
         void setExp(const int exp) { this -> exp = exp; };
@@ -39,16 +37,24 @@ class Character {
         const int getGold() { return this -> gold; };
         virtual const int throwDice();
 //		void speak(const char num, ...);
+private:
+		Types type;
+		int hp;
+		int atk;
+		int def;
+		int exp;
+        int gold;
+
 };
 
 class Hero: public Character {
-	private:
+private:
 		int lvl;
 	  	int maxHP;
 		int potions;
         float critChance;
-	public:
-        Hero(): Character(HERO), lvl(0), maxHP(100), potions(3), critChance(0.05) {};
+public:
+        Hero(): Character(HERO, 0), lvl(0), maxHP(100), potions(3), critChance(0.05) {};
 		int challenge(Character& enemy);
 		int hit(Character& enemy);
 		void updateExp(const int exp);
@@ -67,7 +73,7 @@ void Hero :: addPotion() {
 		++this -> potions;
 		this -> setGold (gold - 50);
 	} else {
-		cout << "Not enough gold! You have only " << gold << endl;
+		std::cout << "Not enough gold! You have only " << gold << std::endl;
 	}
 }
 
@@ -108,9 +114,9 @@ void Hero :: heal() {
 	if (this -> potions){
         this -> setHP ( this -> getHP() + HEAL > this -> maxHP ? this -> maxHP : this -> getHP() + HEAL );
 		this -> potions --;
-        cout << "Potions left: " << this -> potions << endl;
+        std::cout << "Potions left: " << this -> potions << std::endl;
 	} else {
-        cout << "Cannot heal: no potions left!" << endl;
+        std::cout << "Cannot heal: no potions left!" << std::endl;
 	}
 }
 
@@ -121,26 +127,26 @@ int Hero :: hit(Character& enemy){
 
     int modifier = this -> throwDice();
     if (2 == modifier){
-        cout << "Critical hit for Hero!" << endl;
+        std::cout << "Critical hit for Hero!" << std::endl;
         amount *= 2;
     }
     enemy.decHP(amount);
-    
+
     atk = enemy.getAtk();
     def = this -> getDef();
 	amount = atk - def > 0? atk - def : 1;
-	
+
     modifier = this -> throwDice();
     if (2 == modifier){
-        cout << "Critical hit for " << charNames[enemy.getType()] << "!" << endl;
+        std::cout << "Critical hit for " << charNames[enemy.getType()] << "!" << std::endl;
         amount *= 2;
     }
     this -> decHP(amount);
 
 	if ( this -> getHP() <= 0){
-		return GAME_OVER;
+		return ::GAME_OVER;
 	} else if ( enemy.getHP() <= 0){
-		return ENEMY_DEAD;
+		return ::ENEMY_DEAD;
 	} else {
 		return 0;
 	}
@@ -149,31 +155,31 @@ int Hero :: hit(Character& enemy){
 int Hero :: challenge(Character& enemy) {
 	char act = 0;
 
-//	if (NECROMANCER == enemy.getType){
+//	if (Character::Types::NECROMANCER == enemy.getType){
 		//TODO: add scripted dialog between hero and necromancer
 //	}
 
 	while (enemy.getHP() > 0 && this -> getHP() > 0) {
-		cout << "What should we do?" << endl;
-		cout << "HP: " << this -> getHP() << '/' << this -> maxHP << endl;
-        cout << "Atk / Def: " << this -> getAtk() << " / " << this -> getDef() << endl;
-        cout << "Crit chance: " << this -> critChance * 100 << '%' << endl;
-        cout << "Enemy type: " << charNames[enemy.getType()] << endl;
-        cout << "Enemy HP: " << enemy.getHP() << endl;
-        cout << "Atk / Def: " << enemy.getAtk() << " / " << enemy.getDef() << endl;
-        cout << "Potions: " << this -> potions << endl << endl;
-		cout << "1. Attack" << endl;
-		cout << "2. Use potion ( + " << HEAL << " HP )" << endl;
-        cout << "3. Flee from battle" << endl;
+		std::cout << "What should we do?" << std::endl;
+		std::cout << "HP: " << this -> getHP() << '/' << this -> maxHP << std::endl;
+        std::cout << "Atk / Def: " << this -> getAtk() << " / " << this -> getDef() << std::endl;
+        std::cout << "Crit chance: " << this -> critChance * 100 << '%' << std::endl;
+        std::cout << "Enemy type: " << charNames[enemy.getType()] << std::endl;
+        std::cout << "Enemy HP: " << enemy.getHP() << std::endl;
+        std::cout << "Atk / Def: " << enemy.getAtk() << " / " << enemy.getDef() << std::endl;
+        std::cout << "Potions: " << this -> potions << std::endl << std::endl;
+		std::cout << "1. Attack" << std::endl;
+		std::cout << "2. Use potion ( + " << ::HEAL << " HP )" << std::endl;
+        std::cout << "3. Flee from battle" << std::endl;
 
-		cin >> act;
-        
+		std::cin >> act;
+
 		switch (act) {
             case '1': {
 				int result = this -> hit(enemy);
-				if (result == GAME_OVER){
-					return GAME_OVER;
-				} else if (result == ENEMY_DEAD){
+				if (result == ::GAME_OVER){
+					return ::GAME_OVER;
+				} else if (result == ::ENEMY_DEAD){
 					return 0;
 				}
                 break;
@@ -183,27 +189,28 @@ int Hero :: challenge(Character& enemy) {
                 break;
             }
             case '3': {
-                return FLED;
+				return ::FLED;
             }
 
 		}
-        
+
         while ( ( act = getchar() ) != '\n'){
-            
+
         }
-	
+
+        //system("clear");
     }
 
 	return -1;
 }
 
 Character :: Character(){
-    this -> type = -1;
+    this -> type = NORM_ENEMY;
 }
 
-Character :: Character(const int type) {
+Character :: Character(Types type, const int templ) {
 	this -> type = type;
-	switch (type) {
+	switch (templ) {
 		//Hero
 		case 0: {
             this -> hp = 100;
@@ -265,8 +272,10 @@ const int Character :: throwDice() {
 	va_list args;
 	va_start (args, num);
 	while (num --){
-		cout << charNames[this.type] << ": " << va_arg(args, char*);
+		std::cout << charNames[this.type] << ": " << va_arg(args, char*);
 	}
 	va_end(args);
 }
 */
+
+#endif
