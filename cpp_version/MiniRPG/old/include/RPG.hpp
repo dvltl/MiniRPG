@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <queue>
-#include <cstdlib>
-#include "types.hpp"
+#include "include/types.hpp"
+#include "include/Hero.hpp"
 
 namespace {
 	const int WAT = 406;
@@ -19,13 +19,15 @@ private:
 	bool heroDead;
 	bool gameCleared;
 	bool shopOpportunity;
+
+	void shop();
+	void battle() throw (int);
+	std::queue <int> generateEnemies(const int);
+	
 public:
 	RPG();
 	void action() throw(int);
-	void shop();
-	void battle() throw (int);
 	bool isGameOver() { return heroDead || gameCleared; };
-	std::queue <int> generateEnemies(const int);
 };
 
 #endif

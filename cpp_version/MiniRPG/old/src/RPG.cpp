@@ -1,11 +1,12 @@
-#include "RPG.hpp"
+#include "include/RPG.hpp"
 
 RPG :: RPG(): necromancer(Character(Character::NECROMANCER, 1)), heroDead(false), gameCleared(false), shopOpportunity(false) {
+	std::srand(0);
 	hero = Hero();
-	enemies = generateEnemies( rand() % 10 );
+	enemies = generateEnemies( std::rand() % 10 );
 
     for (int i = 2; i < 5; ++i){ // 0 - Hero, 1 - Necomancer
-        minions.push_back( Character( Character::NORM_ENEMY, i ) );
+        minions.push_back( Character( Character::NORM_ENEMY ) );
     }
 }
 
@@ -23,7 +24,7 @@ std::queue <int> RPG :: generateEnemies(const int enemyNumber) {
 }
 
 void RPG :: action () throw (int){
-	int result = rand() % 45;
+	int result = std::rand() % 45;
 
 	if (!shopOpportunity && result >= 35) {
 		result = 0;

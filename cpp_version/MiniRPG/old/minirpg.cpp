@@ -1,12 +1,11 @@
 #include <stdlib.h>
 #include <iostream>
-#include "RPG.hpp"
+#include "include/RPG.hpp"
 
 using namespace std;
 
-RPG minirpg = RPG();
-
 int main() {
+	RPG minirpg = RPG();
 
     while (!minirpg.isGameOver() ) {
         try {
