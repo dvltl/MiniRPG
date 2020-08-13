@@ -3,8 +3,8 @@
 #include <memory>
 
 #include "IGame.h"
+#include "PoppingContainer.h"
 #include "models/IModel.h"
-#include "characters/IMainCharacter.h"
 
 class RPG : public IGame {
 public:
@@ -20,10 +20,10 @@ private:
 	//void shop();
 	//void battle();
 
-	std::unique_ptr<IMainCharacter> m_hero;
-	std::unique_ptr<IMainCharacter> m_bbeg;
-	std::unique_ptr<IModel> m_modelUsed;
-	std::unique_ptr<CharacterContainer> m_enemies;
+	const std::unique_ptr<ICharacter> m_hero;
+	const std::unique_ptr<ICharacter> m_bbeg;
+	const std::unique_ptr<IModel> m_modelUsed;
+	const std::unique_ptr<PoppingContainer<ICharacter>> m_enemies;
 
 	bool m_shopOpportunity;
 	bool m_heroDead;
