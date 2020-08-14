@@ -5,12 +5,14 @@
 #include "GameFactory.h"
 
 int main() try {
-	// TODO: add boost::program_options support
+	// TODO: add IIOHandler to choose the type of game to play
 	std::unique_ptr<IGame> game = GameFactory().createGame(IGame::GameType::DnDRPG);
 
 	std::cout << game->getName().c_str() << std::endl;
 
 	IGame::Result res = game->start();
+
+	// TODO: handle this output through the respective IIOHandler
 	switch (res) {
 	case IGame::Result::GAME_WON:
 		std::cout << "Congratulations! You've won!" << std::endl;

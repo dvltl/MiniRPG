@@ -6,14 +6,14 @@
 template<typename T>
 class PoppingContainer {
 public:
-	PoppingContainer() : m_container(std::make_unique<Impl>()) {};
+	PoppingContainer() : m_container() {};
 	~PoppingContainer() {};
 
-	void add(std::unique_ptr<T>) {
+	void add(std::unique_ptr<T> ch) {
 		m_container.push(std::move(ch));
 	}
 	std::unique_ptr<T> getNext() {
-		auto result = m_container.front();
+		auto result = std::move(m_container.front());
 		m_container.pop();
 		return std::move(result);
 	}

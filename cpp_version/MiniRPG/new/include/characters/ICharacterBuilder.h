@@ -5,8 +5,9 @@
 
 
 class ICharacterBuilder {
-	std::unique_ptr<ICharacter> createHero() const override;
-	std::unique_ptr<ICharacter> createBBEG() const override;
+public:
+	virtual std::unique_ptr<ICharacter> createHero() const = 0;
+	virtual std::unique_ptr<ICharacter> createBBEG() const = 0;
 
-	std::unique_ptr<PoppingContainer<ICharacter>> createEnemies() const override;
+	virtual std::unique_ptr<PoppingContainer<ICharacter>> createEnemies() const = 0;
 };

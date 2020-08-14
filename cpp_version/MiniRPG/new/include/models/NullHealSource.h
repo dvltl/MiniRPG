@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "characters/IHealSource.h"
+#include "models/IHealSource.h"
 
 class NullHealSource : public IHealSource {
 public:

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "characters/IHealSource.h"
+#include "models/IHealSource.h"
 #include "types/DnDTypes.h"
 
 class DnDPotion : public IHealSource {
 public:
-	HP restoresFor() override;
+	HP restoresFor() const override;
 
 	DnDPotion(Die die, unsigned short dieNum);
 private:

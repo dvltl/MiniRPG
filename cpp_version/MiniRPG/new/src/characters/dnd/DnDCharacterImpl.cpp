@@ -15,3 +15,35 @@ HP DnDCharacterImpl::getHP() const {
 Level DnDCharacterImpl::getLevel() const {
 	return m_level;
 }
+
+Prof DnDCharacterImpl::getProficiency() const {
+	return m_proficiency;
+}
+
+Modifier DnDCharacterImpl::getAbilityModifier() const {
+	return m_modifier;
+}
+
+Die DnDCharacterImpl::getDamageDie() const {
+	return m_dmgDie;
+}
+
+void DnDCharacterImpl::receiveDamage(HP amount) {
+	m_hitPoints -= amount;
+}
+
+bool DnDCharacterImpl::hasPotion() const {
+	return (m_potions > 0);
+}
+
+void DnDCharacterImpl::usePotion() {
+	--m_potions;
+}
+
+void DnDCharacterImpl::speak(const ICharacter& other) const {
+	// TODO: implement this
+}
+
+bool DnDCharacterImpl::isAlive() const {
+	return m_hitPoints > 0;
+}

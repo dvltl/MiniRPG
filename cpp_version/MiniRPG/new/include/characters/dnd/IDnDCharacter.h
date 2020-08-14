@@ -12,4 +12,6 @@ public:
 	virtual Modifier getAbilityModifier() const = 0;
 	virtual Die getDamageDie() const = 0;
 	virtual void receiveDamage(HP amount) = 0;
+	virtual bool hasPotion() const = 0;
+	virtual void usePotion() = 0;
 };

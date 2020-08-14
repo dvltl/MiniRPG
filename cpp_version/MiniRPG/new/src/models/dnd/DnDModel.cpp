@@ -10,11 +10,20 @@ std::string DnDModel::getDescription() const {
 }
 
 void DnDModel::performHeal(ICharacter& actor, IHealSource& source) const {
-	auto amount = source.restoresFor();
-	actor.heal(amount);
+	if (typeid(actor) == typeid(IDnDCharacter)) {
+		IDnDCharacter * dndActor = (IDnDCharacter*)(&actor);
+		if (dndActor->hasPotion()) {
+			auto amount = source.restoresFor();
+			dndActor->usePotion();
+			actor.heal(amount);
+		}
+	}
+	else {
+		throw badCharacter;
+	}
 }
 
-void DnDModel::performHit(ICharacter& source, ICharacter& target) const {
+void DnDModel::performAttack(ICharacter& source, ICharacter& target) const {
 	auto validSource = typeid(source) == typeid(IDnDCharacter);
 	auto validTarget = typeid(target) == typeid(IDnDCharacter);
 
@@ -22,21 +31,20 @@ void DnDModel::performHit(ICharacter& source, ICharacter& target) const {
 		IDnDCharacter * dndSource = (IDnDCharacter*)(&source);
 		IDnDCharacter * dndTarget = (IDnDCharacter*)(&target);
 
-		DiceThrower thrower;
-		auto res = thrower.throwDice(Die::D20);
+		auto res = DiceThrower::getInstance().throwDice(Die::D20);
 		res += dndSource->getAbilityModifier();
 		res += dndSource->getProficiency();
 
 		if (res > dndTarget->getAC()) {
 			auto die = dndSource->getDamageDie();
-			auto damage = thrower.throwDice(die);
+			auto damage =DiceThrower::getInstance().throwDice(die);
 			damage += dndSource->getAbilityModifier();
 			
 			dndTarget->receiveDamage(damage);
 		}
 	}
 	else {
-		throw std::runtime_error("Unexpected character interfaces. Expected to have IDnDCharacter implementations.");
+		throw badCharacter;
 	}
 }
 
